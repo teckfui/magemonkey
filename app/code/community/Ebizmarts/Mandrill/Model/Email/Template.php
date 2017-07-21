@@ -138,8 +138,10 @@ class Ebizmarts_Mandrill_Model_Email_Template extends Mage_Core_Model_Email_Temp
         $mandrillSenders = $mail->senders->domains();
         $senderExists = false;
         foreach ($mandrillSenders as $sender) {
-            if ($emailArray[1] == $sender['domain']) {
-                $senderExists = true;
+            if (isset($sender['domain']) {
+                if ($emailArray[1] == $sender['domain']) {
+                    $senderExists = true;
+                }
             }
         }
         if (!$senderExists) {
