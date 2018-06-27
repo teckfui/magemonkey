@@ -24,7 +24,7 @@ class Ebizmarts_MageMonkey_Model_MCEXPORTAPI extends Ebizmarts_MageMonkey_Model_
     function __construct($apikey, $secure = false)
     {
         $this->secure = $secure;
-        $this->apiUrl = Mage::getSingleton('core/url')->parseUrl("http://api.mailchimp.com/export/" . $this->version . "/" ); //parse_url("http://api.mailchimp.com/export/" . $this->version . "/");
+        $this->apiUrl = Mage::getSingleton('core/url')->parseUrl("https://api.mailchimp.com/export/" . $this->version . "/" ); //parse_url("http://api.mailchimp.com/export/" . $this->version . "/");
         $this->api_key = $apikey;
     }
 
