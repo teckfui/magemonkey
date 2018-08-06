@@ -42,7 +42,7 @@ class Ebizmarts_MageMonkey_Model_MCAPI
      *
      * @var bool
      */
-    var $secure = false;
+    var $secure = true;
 
     /**
      * @var array Request params storage
@@ -55,7 +55,7 @@ class Ebizmarts_MageMonkey_Model_MCAPI
      * @param string $apikey Your MailChimp apikey
      * @param string $secure Whether or not this should use a secure connection
      */
-    function __construct($apikey, $secure = false)
+    function __construct($apikey, $secure = true)
     {
         $this->secure = $secure;
         $this->apiUrl = parse_url("https://api.mailchimp.com/" . $this->version . "/?output=php");
@@ -77,11 +77,7 @@ class Ebizmarts_MageMonkey_Model_MCAPI
 
     function useSecure($val)
     {
-        if ($val === true) {
-            $this->secure = true;
-        } else {
-            $this->secure = false;
-        }
+        $this->secure = true;
     }
 
     /**
@@ -2531,11 +2527,7 @@ class Ebizmarts_MageMonkey_Model_MCAPI
         $payload .= $post_vars;
 
         ob_start();
-        if ($this->secure) {
-            $sock = fsockopen("ssl://" . $host, 443, $errno, $errstr, 30);
-        } else {
-            $sock = fsockopen($host, 80, $errno, $errstr, 30);
-        }
+        $sock = fsockopen("ssl://" . $host, 443, $errno, $errstr, 30);
         if (!$sock) {
             $this->errorMessage = "Could not connect (ERR $errno: $errstr)";
             $this->errorCode = "-99";
